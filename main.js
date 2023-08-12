@@ -1,3 +1,4 @@
-$(document).ready(function () {
-
+$(function () {
+    $("#sortable-row").sortable();
+    $("#sortable-list").sortable();
 });
