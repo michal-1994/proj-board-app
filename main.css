@@ -61,8 +61,8 @@ li {
 /* Sortable row */
 .sortable-row {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
     padding: 20px;
     gap: 20px;
     overflow: auto;
@@ -72,14 +72,15 @@ li {
     border-radius: 5px;
     background-color: #313131;
     width: 250px;
+    min-width: 250px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
-        rgba(209, 213, 219, .25) 0px 0px 0px 1px inset;
-    transition: box-shadow linear .2s;
+        rgba(209, 213, 219, 0.25) 0px 0px 0px 1px inset;
+    transition: box-shadow linear 0.2s;
 }
 .sortable-row > li:hover {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
         #3740a1 0px 0px 0px 1px inset;
-    transition: box-shadow linear .2s;
+    transition: box-shadow linear 0.2s;
 }
 /* Sortable list */
 .sortable-list {
@@ -96,11 +97,11 @@ li {
     background-color: #232323;
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
-        rgba(209, 213, 219, .25) 0px 0px 0px 1px inset;
-    transition: box-shadow linear .2s;
+        rgba(209, 213, 219, 0.25) 0px 0px 0px 1px inset;
+    transition: box-shadow linear 0.2s;
 }
 .sortable-list > li:hover {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
         #3740a1 0px 0px 0px 1px inset;
-    transition: box-shadow linear .2s;
+    transition: box-shadow linear 0.2s;
 }
