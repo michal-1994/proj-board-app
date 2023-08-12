@@ -1,1 +1,3 @@
-console.log("Start");
+$(document).ready(function () {
+
+});
