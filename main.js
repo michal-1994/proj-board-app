@@ -1,7 +1,5 @@
 $(function () {
     function initApp() {
-        const board = [];
-
         initSortable();
 
         // Add list
@@ -12,12 +10,7 @@ $(function () {
                 const value = $(this).val();
 
                 addList(value);
-                board.push({
-                    list: value,
-                    items: [],
-                });
                 $(this).val("");
-                console.log(board);
             }
         });
 
@@ -26,23 +19,41 @@ $(function () {
             const value = $(this).siblings()[0].value;
 
             addList(value);
-            board.push({
-                list: value,
-                items: [],
-            });
             $(input).val("");
-            console.log(board);
         });
 
         // Remove list
+        $(".sortable-list-title button").click(function (e) {
+            console.log("Remove list");
+        });
 
         // Edit list
+        $(".sortable-list-title input[type='text']").keypress(function (e) {
+            console.log("Edit list");
+        });
 
         // Add item
+        $(".sortable-add-item-button input[type='text']").keypress(function (
+            e
+        ) {
+            if (e.which === 13) {
+                console.log("Add item");
+            }
+        });
+
+        $(".sortable-add-item-button button").click(function (e) {
+            console.log("Add item");
+        });
 
         // Remove item
+        $(".sortable-list-item button").click(function (e) {
+            console.log("Remove item");
+        });
 
         // Edit item
+        $(".sortable-list-item input[type='text']").keypress(function (e) {
+            console.log("Edit item");
+        });
 
         // Save to localStorage
     }
