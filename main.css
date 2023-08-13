@@ -31,7 +31,7 @@ html {
     align-items: center;
 }
 header {
-    background-color: #3740a1;
+    background-color: #30a553;
     color: white;
     display: flex;
     justify-content: center;
@@ -43,7 +43,7 @@ main {
 }
 footer {
     margin-top: auto;
-    background-color: #3740a1;
+    background-color: #30a553;
     color: white;
     display: flex;
     justify-content: center;
@@ -61,29 +61,42 @@ li {
 input[type="text"] {
     width: 100%;
     height: 100%;
-    padding: 4px;
+    padding: 8px;
     margin: 0;
     background-color: inherit;
     outline: none;
     color: white;
     font-size: 16px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    letter-spacing: 1px;
 }
-input[type="button"] {
+input[type="text"]:focus {
+    border: 1px solid #30a553;
+}
+button {
     height: 100%;
-    padding: 4px;
-    margin: 0;
     background-color: inherit;
     outline: none;
     color: white;
-    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    opacity: .8;
+}
+button:hover {
+    opacity: 1;
 }
 /* Sortable */
 .sortable-add-button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.sortable-add-button input {
 }
 /* Sortable row */
 .sortable-row {
@@ -106,7 +119,7 @@ input[type="button"] {
 }
 .sortable-row > li:hover {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
-        #3740a1 0px 0px 0px 1px inset;
+        #30a553 0px 0px 0px 1px inset;
     transition: box-shadow linear 0.2s;
 }
 /* Sortable list */
@@ -129,7 +142,7 @@ input[type="button"] {
 }
 .sortable-list > li:hover {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
-        #3740a1 0px 0px 0px 1px inset;
+        #30a553 0px 0px 0px 1px inset;
     transition: box-shadow linear 0.2s;
 }
 .sortable-list-item {
@@ -137,12 +150,8 @@ input[type="button"] {
     justify-content: space-between;
     align-items: center;
 }
-.sortable-list-item input {
-}
 .sortable-list-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.sortable-list-title input {
 }
