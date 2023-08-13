@@ -96,7 +96,8 @@ button:hover {
     opacity: 1;
 }
 /* Sortable */
-.sortable-add-button {
+.sortable-add-list-button,
+.sortable-add-item-button {
     display: flex;
     justify-content: space-between;
     align-items: center;
