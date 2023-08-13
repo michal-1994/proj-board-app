@@ -13,6 +13,10 @@ html {
 *::before {
     box-sizing: border-box;
 }
+::selection {
+    color: white;
+    background-color: #30a553;
+}
 .pagewrapper {
     display: flex;
     flex-direction: column;
@@ -90,7 +94,7 @@ button {
     outline: none;
     cursor: pointer;
     border-radius: 50%;
-    opacity: .8;
+    opacity: 0.8;
 }
 button:hover {
     opacity: 1;
