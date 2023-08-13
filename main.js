@@ -24,12 +24,9 @@ $(function () {
 
         // Remove list
         $(".sortable-list-title button").click(function (e) {
-            console.log("Remove list");
-        });
+            const list = $(this).parent().parent().parent()[0];
 
-        // Edit list
-        $(".sortable-list-title input[type='text']").keypress(function (e) {
-            console.log("Edit list");
+            removeList(list);
         });
 
         // Add item
@@ -49,13 +46,6 @@ $(function () {
         $(".sortable-list-item button").click(function (e) {
             console.log("Remove item");
         });
-
-        // Edit item
-        $(".sortable-list-item input[type='text']").keypress(function (e) {
-            console.log("Edit item");
-        });
-
-        // Save to localStorage
     }
 
     function initSortable() {
@@ -103,18 +93,18 @@ $(function () {
                 </ul>
             </li>`;
             $(html).insertBefore(".sortable-row li:last-child");
+            initSortable();
         }
     }
 
-    function editList(id) {}
-
-    function removeList(id) {}
+    function removeList(list) {
+        $(list).remove();
+        initSortable();
+    }
 
     function addItem() {}
 
-    function editItem(id) {}
-
-    function removeItem(id) {}
+    function removeItem() {}
 
     initApp();
 });
