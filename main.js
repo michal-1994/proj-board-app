@@ -115,7 +115,7 @@ $(function () {
     function addItem(value, input) {
         if (value !== "") {
             const html = `<li class="ui-state-default sortable-list-item">
-                <input type="text" placeholder="Item" />
+                <input type="text" placeholder="Item" value="${value}" />
                 <button>
                     <span class="material-symbols-outlined">
                         delete
