@@ -34,12 +34,19 @@ $(function () {
             e
         ) {
             if (e.which === 13) {
-                console.log("Add item");
+                const value = $(this).val();
+
+                addItem(value, this);
+                $(this).val("");
             }
         });
 
         $(".sortable-add-item-button button").click(function (e) {
-            console.log("Add item");
+            const input = $(this).siblings()[0];
+            const value = $(this).siblings()[0].value;
+
+            addItem(value, input);
+            $(input).val("");
         });
 
         // Remove item
@@ -102,7 +109,20 @@ $(function () {
         initSortable();
     }
 
-    function addItem() {}
+    function addItem(value, input) {
+        if (value !== "") {
+            const html = `<li class="ui-state-default sortable-list-item">
+                <input type="text" placeholder="Item" />
+                <button>
+                    <span class="material-symbols-outlined">
+                        delete
+                    </span>
+                </button>
+            </li>`;
+            $(html).insertBefore($(input).parent());
+            initSortable();
+        }
+    }
 
     function removeItem() {}
 
