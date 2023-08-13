@@ -1,4 +1,8 @@
 $(function () {
+    function initApp() {
+        initSortable();
+    }
+
     function initSortable() {
         let oldList, newList, item;
 
@@ -25,5 +29,5 @@ $(function () {
             .disableSelection();
     }
 
-    initSortable();
+    initApp();
 });
