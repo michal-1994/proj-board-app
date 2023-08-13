@@ -1,7 +1,32 @@
 $(function () {
-    function initApp() {
+    function updateBoard() {
         initSortable();
+        addListeners();
+    }
 
+    function initSortable() {
+        let oldList, newList, item;
+
+        $(".sortable-row").sortable({
+            cancel: ".unsortable",
+        });
+        $(".sortable-list")
+            .sortable({
+                start: function (event, ui) {
+                    item = ui.item;
+                    newList = oldList = ui.item.parent().parent();
+                },
+                stop: function (event, ui) {},
+                change: function (event, ui) {
+                    if (ui.sender) newList = ui.placeholder.parent().parent();
+                },
+                cancel: ".unsortable",
+                connectWith: ".sortable-list",
+            })
+            .disableSelection();
+    }
+
+    function addListeners() {
         // Add list
         $(".sortable-add-list-button input[type='text']").keypress(function (
             e
@@ -25,7 +50,6 @@ $(function () {
         // Remove list
         $(".sortable-list-title button").click(function (e) {
             const list = $(this).parent().parent().parent()[0];
-
             removeList(list);
         });
 
@@ -51,30 +75,9 @@ $(function () {
 
         // Remove item
         $(".sortable-list-item button").click(function (e) {
-            console.log("Remove item");
+            const item = $(this).parent()[0];
+            removeItem(item);
         });
-    }
-
-    function initSortable() {
-        let oldList, newList, item;
-
-        $(".sortable-row").sortable({
-            cancel: ".unsortable",
-        });
-        $(".sortable-list")
-            .sortable({
-                start: function (event, ui) {
-                    item = ui.item;
-                    newList = oldList = ui.item.parent().parent();
-                },
-                stop: function (event, ui) {},
-                change: function (event, ui) {
-                    if (ui.sender) newList = ui.placeholder.parent().parent();
-                },
-                cancel: ".unsortable",
-                connectWith: ".sortable-list",
-            })
-            .disableSelection();
     }
 
     function addList(value) {
@@ -100,13 +103,13 @@ $(function () {
                 </ul>
             </li>`;
             $(html).insertBefore(".sortable-row li:last-child");
-            initSortable();
+            updateBoard();
         }
     }
 
     function removeList(list) {
         $(list).remove();
-        initSortable();
+        updateBoard();
     }
 
     function addItem(value, input) {
@@ -120,11 +123,14 @@ $(function () {
                 </button>
             </li>`;
             $(html).insertBefore($(input).parent());
-            initSortable();
+            updateBoard();
         }
     }
 
-    function removeItem() {}
+    function removeItem(item) {
+        $(item).remove();
+        updateBoard();
+    }
 
-    initApp();
+    updateBoard();
 });
