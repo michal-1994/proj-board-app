@@ -82,7 +82,7 @@ $(function () {
                         </button>
                     </div>
                     <div class="sortable-add-item-button unsortable">
-                        <input type="text" placeholder="Add" />
+                        <input type="text" placeholder="Add item" />
                         <button>
                             <span class="material-symbols-outlined">
                                 add
