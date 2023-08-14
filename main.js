@@ -80,8 +80,14 @@ $(function () {
         });
 
         // Edit input
-        $("input").click(function (e) {
+        $(".sortable-list-item input").click(function (e) {
             $(this).focus();
+        });
+
+        $(".sortable-list-item input").keypress(function (e) {
+            if (e.which === 13) {
+                $(this).blur();
+            }
         });
     }
 
