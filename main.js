@@ -78,6 +78,11 @@ $(function () {
             const item = $(this).parent()[0];
             removeItem(item);
         });
+
+        // Edit input
+        $("input").click(function (e) {
+            $(this).focus();
+        });
     }
 
     function addList(value) {
