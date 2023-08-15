@@ -82,12 +82,18 @@ $(function () {
         // Edit input
         $(".sortable-list-item input").click(function (e) {
             $(this).focus();
+            this.selectionStart = this.selectionEnd = -1;
         });
 
         $(".sortable-list-item input").keypress(function (e) {
             if (e.which === 13) {
                 $(this).blur();
             }
+        });
+
+        // Select text
+        $(".sortable-list-item input").dblclick(function (e) {
+            $(this).select();
         });
     }
 
