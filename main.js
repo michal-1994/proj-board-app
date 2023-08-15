@@ -1,13 +1,22 @@
 $(function () {
+    function initBoard() {
+        loadBoard();
+        updateBoard();
+    }
+
     function updateBoard() {
         initSortable();
         addListeners();
+        saveBoard();
     }
 
     function initSortable() {
         let oldList, newList, item;
 
         $(".sortable-row").sortable({
+            update: function () {
+                saveBoard();
+            },
             cancel: ".unsortable",
         });
         $(".sortable-list")
@@ -18,6 +27,9 @@ $(function () {
                 },
                 change: function (event, ui) {
                     if (ui.sender) newList = ui.placeholder.parent().parent();
+                },
+                update: function () {
+                    saveBoard();
                 },
                 cancel: ".unsortable",
                 connectWith: ".sortable-list",
@@ -90,6 +102,12 @@ $(function () {
             }
         });
 
+        $("input").blur(function (e) {
+            const value = $(this).val();
+            $(this).attr("value", value);
+            saveBoard();
+        });
+
         // Select text
         $(".sortable-list-item input").dblclick(function (e) {
             $(this).select();
@@ -148,5 +166,140 @@ $(function () {
         updateBoard();
     }
 
-    updateBoard();
+    function saveBoard() {
+        const htmlContent = $("#content").html();
+        console.log(htmlContent);
+        localStorage.setItem("board", htmlContent);
+    }
+
+    function loadBoard() {
+        const htmlContent = localStorage.getItem("board");
+
+        if (!!htmlContent) {
+            $("#content").html(htmlContent);
+        } else {
+            $("#content").html(`<ul class="sortable-row">
+                <li class="ui-state-default">
+                    <ul class="sortable-list">
+                        <li class="sortable-list-title unsortable">
+                            <input
+                                type="text"
+                                placeholder="Title"
+                                value="Todo"
+                            />
+                            <button>
+                                <span class="material-symbols-outlined">
+                                    delete
+                                </span>
+                            </button>
+                        </li>
+                        <li class="ui-state-default sortable-list-item">
+                            <input
+                                type="text"
+                                placeholder="Item"
+                                value="Item todo"
+                            />
+                            <button>
+                                <span class="material-symbols-outlined">
+                                    delete
+                                </span>
+                            </button>
+                        </li>
+                        <li class="sortable-add-item-button unsortable">
+                            <input type="text" placeholder="Add item" />
+                            <button>
+                                <span class="material-symbols-outlined">
+                                    add
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                </li>
+                <li class="ui-state-default">
+                    <ul class="sortable-list">
+                        <li class="sortable-list-title unsortable">
+                            <input
+                                type="text"
+                                placeholder="Title"
+                                value="In progress"
+                            />
+                            <button>
+                                <span class="material-symbols-outlined">
+                                    delete
+                                </span>
+                            </button>
+                        </li>
+                        <li class="ui-state-default sortable-list-item">
+                            <input
+                                type="text"
+                                placeholder="Item"
+                                value="Item in progress"
+                            />
+                            <button>
+                                <span class="material-symbols-outlined">
+                                    delete
+                                </span>
+                            </button>
+                        </li>
+                        <li class="sortable-add-item-button unsortable">
+                            <input type="text" placeholder="Add item" />
+                            <button>
+                                <span class="material-symbols-outlined">
+                                    add
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                </li>
+                <li class="ui-state-default">
+                    <ul class="sortable-list">
+                        <li class="sortable-list-title unsortable">
+                            <input
+                                type="text"
+                                placeholder="Title"
+                                value="Done"
+                            />
+                            <button>
+                                <span class="material-symbols-outlined">
+                                    delete
+                                </span>
+                            </button>
+                        </li>
+                        <li class="ui-state-default sortable-list-item">
+                            <input
+                                type="text"
+                                placeholder="Item"
+                                value="Item done"
+                            />
+                            <button>
+                                <span class="material-symbols-outlined">
+                                    delete
+                                </span>
+                            </button>
+                        </li>
+                        <li class="sortable-add-item-button unsortable">
+                            <input type="text" placeholder="Add item" />
+                            <button>
+                                <span class="material-symbols-outlined">
+                                    add
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                </li>
+                <li class="ui-state-default unsortable">
+                    <div class="sortable-add-list-button unsortable">
+                        <input type="text" placeholder="Add list" />
+                        <button>
+                            <span class="material-symbols-outlined">
+                                add
+                            </span>
+                        </button>
+                    </div>
+                </li>
+            </ul>`);
+        }
+    }
+
+    initBoard();
 });
