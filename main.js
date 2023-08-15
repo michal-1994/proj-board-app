@@ -128,7 +128,7 @@ $(function () {
                     </div>
                 </ul>
             </li>`;
-            $(html).insertBefore(".sortable-row li:last-child");
+            $(html).insertBefore(".sortable-row > li.unsortable");
             updateBoard();
         }
     }
