@@ -168,7 +168,6 @@ $(function () {
 
     function saveBoard() {
         const htmlContent = $("#content").html();
-        console.log(htmlContent);
         localStorage.setItem("board", htmlContent);
     }
 
