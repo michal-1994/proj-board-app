@@ -8,6 +8,11 @@ $(function () {
         let oldList, newList, item;
 
         $(".sortable-row").sortable({
+            beforeStop: function (event, ui) {
+                if (!ui.placeholder.next().is("li")) {
+                    $(".sortable-row").sortable("cancel");
+                }
+            },
             cancel: ".unsortable",
         });
         $(".sortable-list")
@@ -16,9 +21,13 @@ $(function () {
                     item = ui.item;
                     newList = oldList = ui.item.parent().parent();
                 },
-                stop: function (event, ui) {},
                 change: function (event, ui) {
                     if (ui.sender) newList = ui.placeholder.parent().parent();
+                },
+                beforeStop: function (event, ui) {
+                    if (!ui.placeholder.next().is("li") || !ui.item.prev().is("li")) {
+                        $(".sortable-list").sortable("cancel");
+                    }
                 },
                 cancel: ".unsortable",
                 connectWith: ".sortable-list",

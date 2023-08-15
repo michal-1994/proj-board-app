@@ -140,7 +140,7 @@ button:hover {
     flex-direction: column;
     gap: 10px;
 }
-.sortable-list > li {
+.sortable-list > .sortable-list-item {
     padding: 10px;
     border-radius: 5px;
     background-color: #232323;
@@ -149,7 +149,7 @@ button:hover {
         rgba(209, 213, 219, 0.25) 0px 0px 0px 1px inset;
     transition: box-shadow linear 0.2s;
 }
-.sortable-list > li:hover {
+.sortable-list > .sortable-list-item:hover {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
         #30a553 0px 0px 0px 1px inset;
     transition: box-shadow linear 0.2s;
