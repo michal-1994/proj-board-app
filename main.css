@@ -17,6 +17,24 @@ html {
     color: white;
     background-color: #30a553;
 }
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #30a553 #ffffff;
+}
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 16px;
+}
+*::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: #30a553;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+}
 .pagewrapper {
     display: flex;
     flex-direction: column;
@@ -43,10 +61,11 @@ header {
     font-size: 0.8rem;
 }
 main {
-    padding: 1.5rem 0;
+    padding: 0;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    height: calc(100vh - 60.16px - 42px);
 }
 footer {
     margin-top: auto;
@@ -111,16 +130,19 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
     padding: 20px;
     gap: 25px;
     overflow: auto;
+    height: 100%;
 }
 .sortable-row > li {
     padding: 20px;
     border-radius: 5px;
     background-color: #313131;
-    width: 275px;
-    min-width: 275px;
+    width: 280px;
+    min-width: 280px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
         rgba(209, 213, 219, 0.25) 0px 0px 0px 1px inset;
     transition: box-shadow linear 0.2s;
