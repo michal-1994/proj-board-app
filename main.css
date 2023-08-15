@@ -132,10 +132,11 @@ button:hover {
     align-items: flex-start;
     align-content: flex-start;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 25px;
     gap: 25px;
     overflow: auto;
     height: 100%;
+    width: 100%;
 }
 .sortable-row > li {
     padding: 20px;
